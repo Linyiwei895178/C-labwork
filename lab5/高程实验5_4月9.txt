@@ -1,0 +1,43 @@
+实验5、 C++项目，预编译，对象数组、指针，动态内存
+
+实验目的：
+1. 会建立多文件项目、熟悉编译预处理指令
+2. 会使用对象数组编程
+3. 能找出动态内存编程中易出现的错误（内存泄露） 
+
+实验内容：
+1. 多文件项目练习
+ 《C++语言程序设计》学生用书，第5章 实验5 数据的共享与保护
+    分析运行 实验任务（2）实现客户机CLIENT类，lab5_2项目。写出体会。
+    参考附件：DEV-C++中多文件项目操作.txt; 
+
+2. 编译预处理：
+   （1）分析附件c5.zip文件中的多文件编译出现的问题，如何解决？
+   （2）针对附件c5_1.zip中的多文件项目(类声明、成员函数、main测试程序分离)。
+    讨论：为什么一个项目多个文件中都有#include <iostream>，而不担心重复？
+   （3）探索所用的C++编译环境中的标准include及library的目录位置。
+
+3. 综合项目：
+    练习课本5.7中，个人银行账户管理程序新加的内容，即例题5_11。（涉及static , const, 多文件）
+
+4. 参照学生用书第6章习题6-18，找出习题6-20（SimpleCircle)中的错误。
+
+5. 分析c6test.zip中的 c6test.cpp，测试如下修改，对比不同运行结果。
+   1) 请注释exec函数中以下语句（第44行）的含义：
+      Object *a=new Object, &b(*new Object(*a));// 注释此句的含义 
+
+   2）如果此句中的&b(*new Object(*a))改为如下两种形式，其含义及对运行结果的影响有什么不同？
+      a) *b(new Object(*a))； 
+      b）b(*new Object(*a))
+
+   3）此题如何避免内存泄漏？cc需要delete吗？
+
+探索：
+了解makefile和cmake（C++项目管理工具）
+https://blog.csdn.net/qq_35977545/article/details/107668711  Makefile官方中文手册（一）什么是Makefile
+https://blog.csdn.net/qq_35977545/article/details/107670725  Makefile官方中文手册（二）怎样编写Makefile
+https://www.cnblogs.com/ybqjymy/p/13409050.html 什么是CMAKE
+https://zhuanlan.zhihu.com/c_200294809 cmake 实用指南
+https://github.com/BrightXiaoHan/CMakeTutorial   Cmake中文实战教程
+
+针对实验中出现的问题，写出你的思考，编写程序探索答案。

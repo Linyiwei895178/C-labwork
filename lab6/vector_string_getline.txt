@@ -1,0 +1,29 @@
+1. vector创建动态数组对象
+    vector动态对象数组与普通数组的不同：创建、赋值、复制、元素、关系运算==,!=, 下标出界检查等。
+    vector对动态数组的封装扩展的功能，如：数组内容赋值=(并自动伸缩数组大小)，关系运算==,!=
+   成员函数：size(),at(),push_back()等
+
+2.string （对字符数组的高级封装)
+    构造函数：string();
+	string(const string &rhs, unsigned pos, unsigned len);
+	string(const char* s);
+       	string(const char* s, unsigned n); 
+	string(unsigned n, char c);
+
+     例：string str="abc"; //调用构造函数
+
+    操作符：+,-,+=,==,!=,<,<=,>,>=,[]
+
+    成员函数：string append(const char* s); 
+	      int compare(const string &str) const; 
+              string& insert(unsigned int p0,const char* s);
+              string substr(unsigned pos, unsigned n) const; 
+              unsigned find(const basic_string &str) const; 
+              unsigned length() const; void swap(string& str);
+
+   例6-23 ,string类应用例 ; 
+
+3. getline()函数可以读如白空格，默认使用回车分割字符串，同样也可以传入第三个参数用于分割字符串。   
+例：getline(cin,s1) 	//s1是string对象，缺省以回车为分隔符；
+    getline(cin,s2,',') //s2是string对象，自定义分隔符,。
+   例6-24 getline()输入字符串
