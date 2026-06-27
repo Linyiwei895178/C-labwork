@@ -1,0 +1,8 @@
+a s acc001 0.03
+d 0 1000 first deposit
+d 0 500 second deposit
+w 0 200 withdraw
+s
+n
+s
+e
