@@ -1,5 +1,6 @@
 #include "date.h"
 #include <iostream>
+#include <stdexcept>
 #include <cstdlib>
 
 using namespace std;
@@ -9,6 +10,7 @@ namespace {
 
 Date::Date(int year, int month, int day) : year(year), month(month), day(day) {
     if ( day <= 0 || day > getMaxDay()) {
+        throw runtime_error("Invalid date");
         cout << "Invalide date: ";
         show(); 
         cout << endl;
@@ -35,6 +37,7 @@ std::istream &operator>>(istream &in, Date &date) {
     int year, month, day;
     char c1, c2;
     in >> year >> c1 >> month >> c2 >> day;
+    if (c1 != '-' || c2 != '-') throw runtime_error("Bad time format");
     date = Date(year, month, day);
     return in;
 }

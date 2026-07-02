@@ -2,6 +2,7 @@
 
 #include "date.h"
 #include "accumulator.h"
+#include <stdexcept>
 #include <string>
 #include <map>
 #include <istream>
@@ -95,4 +96,12 @@ public:
     void withdraw(const Date& date, double amount, const std::string& desc) override;
     void settle(const Date& date) override;
     void show(std::ostream &out) const override;
+};
+
+class AccountException : public std::runtime_error {
+private: 
+    const Account *account;
+public:
+    AccountException(const Account *account, const std::string &msg) : std::runtime_error(msg), account(account) {}
+    const Account *getAccount() const { return account; }
 };

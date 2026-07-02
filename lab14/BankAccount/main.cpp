@@ -1,3 +1,4 @@
+#include <exception>
 #include<iostream> 
 #include "account.h"
 #include "date.h"
@@ -108,8 +109,15 @@ int main() {
     const char* FILE_NAME = "commands.txt";
     ifstream fileIn(FILE_NAME);
     if (fileIn) {
-        while (getline(fileIn, cmdLine))
-            controller.runCommand(cmdLine);
+        while (getline(fileIn, cmdLine)) {
+            try {
+                controller.runCommand(cmdLine);
+            } catch (exception &e) {
+                cout << "Bad line in " << FILE_NAME << ": " << cmdLine << endl;
+                cout << "Error: " << e.what() << endl;
+                return 1;
+            }
+        }
         fileIn.close();
     }
     ofstream fileOut(FILE_NAME, ios_base::app);
@@ -119,8 +127,14 @@ int main() {
         cout << controller.getDate() << "\tTotal: " << Account::getTotal() << "\tcommand>";
         string cmdLine;
         getline(cin, cmdLine);
-        if (controller.runCommand(cmdLine))
+        try { 
+            if (controller.runCommand(cmdLine))
             fileOut << cmdLine << endl;
+        } catch (AccountException &e) {
+            cout << "Error(#" << e.getAccount()->getId() << "): " << e.what() << endl;
+        } catch (exception &e) {
+            cout << "Error: " << e.what() << endl;
+        }
     }
     return 0;
 }

@@ -22,6 +22,7 @@ Account::Account(const Date &date, const string &id)
 void Account::show(ostream &out) const { out << id << "\tBalance: " << balance; }
 
 void Account::error(const string &msg) const {
+    throw AccountException(this, msg);
     cout << "Error(#" << id << "): " << msg << endl;
 }
 
@@ -97,3 +98,5 @@ void CreditAccount::withdraw(const Date &date, double amount, const string &desc
         acc.change(date, getBalance());
     }
 }
+
+
